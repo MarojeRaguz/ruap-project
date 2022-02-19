@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'message-classification'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_438EC7F5A32940E3BA50B9D02BC36AE3 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_75424C37EC9147289C17F3104B513989 }}
           package: .
