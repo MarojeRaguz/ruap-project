@@ -15,10 +15,6 @@ class IndexController extends Controller
 
         if($message!=null){
             
-            $client = new Client([
-                'base_uri' => env('AZURE_BASE'),
-            ]);
-            
 
             $data = array (
                 'Inputs' => array (
@@ -31,7 +27,8 @@ class IndexController extends Controller
                 'GlobalParameters' =>  null
             );
             $body = json_encode($data);
-            $headers = array('Content-Type: application/json', 'Authorization:Bearer ' . env('API_KEY'));
+            $headers = array('Content-Type: application/json', 
+                            'Authorization:Bearer ' . env('API_KEY'));
 
             $curl = curl_init(); 
             curl_setopt($curl, CURLOPT_URL,env('AZURE_URL'));
@@ -42,11 +39,12 @@ class IndexController extends Controller
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         
-            $result = curl_exec($curl);
+            $respone = curl_exec($curl);
 
-            if ($result === false) 
-                $result = curl_error($curl);
-            if(str_contains(strval($result),"ham")){
+            if ($respone === false) {
+                $respone = curl_error($curl);
+            }
+            if(str_contains(strval($respone),"ham")){
                 $messageChecker="ham";
             }else{
                 $messageChecker="spam";

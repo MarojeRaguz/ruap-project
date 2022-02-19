@@ -154,6 +154,10 @@
   
   .form-button-container {
     width: 100%;
+    /* display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox; */
     display: flex;
     flex-wrap: wrap;
     margin-top: -25px;
